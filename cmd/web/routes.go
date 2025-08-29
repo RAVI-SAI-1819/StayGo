@@ -23,5 +23,10 @@ func routes(app *config.AppConfig) http.Handler {
 	mux.Get("/", http.HandlerFunc(handlers.Repo.Home))
 	mux.Get("/about", http.HandlerFunc(handlers.Repo.About))
 
+	// Serve static assets (CSS, JS, images) from the ./static/ directory
+	fileServer := http.FileServer(http.Dir("./static/"))
+	// Strips "/static" prefix to map URL paths correctly to local files
+	mux.Handle("/static/*", http.StripPrefix("/static", fileServer))
+
 	return mux
 }

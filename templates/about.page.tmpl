@@ -1,0 +1,28 @@
+<!-- about.page.tmpl -->
+
+<!-- Include the base layout template and pass current data context -->
+{{template "base" .}}
+
+{{define "content"}}
+<!-- Main content block for the About page -->
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1>This is about page</h1>
+            <p>Some information about me in about section</p>
+
+            <!-- Display value from StringMap with key "test" -->
+            <p>This came from the template {{index .StringMap "test"}}</p>
+
+            <!-- Conditionally show remote IP if available -->
+            <p>
+                {{if ne (index .StringMap "remote_ip") ""}}
+                    Your remote IP address is {{index .StringMap "remote_ip"}}
+                {{else}}
+                    I don't know your IP address yet. Visit the <a href="/">Home Page</a> so I can set it.
+                {{end}}
+            </p>
+        </div>
+    </div>
+</div>
+{{end}}

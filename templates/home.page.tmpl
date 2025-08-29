@@ -1,0 +1,16 @@
+<!-- home.page.tmpl -->
+
+<!-- Include the base layout template and pass current data context -->
+{{template "base" .}}
+
+{{define "content"}}
+<!-- Main content block for the Home page -->
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1>This is the Home page</h1>
+            <p>This is some context in the home page.</p>
+        </div>
+    </div>
+</div>
+{{end}}
